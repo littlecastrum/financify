@@ -1,5 +1,8 @@
-import React, { useState, FunctionComponent, ReactElement } from 'react';
-import style from './style.module.css';
+import React, { useState, useRef, FunctionComponent, ReactElement } from 'react';
+import { Transition } from 'react-transition-group';
+
+import { useOutsideClick } from 'utils/hooks';
+import styles from './style.module.css';
 
 type Props = {
   icon: ReactElement,
@@ -8,14 +11,20 @@ type Props = {
 
 const NavItem: FunctionComponent<Props> = ({ icon, url, children }) => {
   const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLLIElement>(null);
+
+  useOutsideClick(ref, () => {
+    setOpen(false)
+  });
 
   return (
-    <li className={style.main}>
-      <a href={url} className={style.button} onClick={() => setOpen(!open)}>
+    <li className={styles.main} ref={ref}>
+      <a href={url} className={styles.button} onClick={() => setOpen(!open)}>
         {icon}
       </a>
-
-      {open && children}
+      <Transition in={open} timeout={100}>
+        {state => <div className={styles[state]}>{children}</div>}
+      </Transition>
     </li>
   );
 }

@@ -2,15 +2,19 @@
 
 .dropdown {
   position: absolute;
-  top: 58px;
+  top: 25px;
   width: 300px;
-  transform: translateX(-45%);
+  transform: translateX(-104%);
   background-color: var(--bg);
   border: var(--border);
   border-radius: var(--border-radius);
   padding: 1rem;
   overflow: hidden;
   transition: height var(--speed) ease;
+}
+
+.menu {
+  width: 100%;
 }
 
 /* DropdownItem */
@@ -21,21 +25,52 @@
   border-radius: var(--border-radius);
   transition: background var(--speed);
   padding: 0.5rem;
-}
-
-.item .button {
-  margin-right: 0.5rem;
-}
-
-
-.item .button:hover {
-  filter: none;
+  cursor: pointer;
 }
 
 .item:hover {
   background-color: #525357;
 }
 
+.left {
+  margin-right: 0.5rem;
+}
+
+.left:hover {
+  filter: none;
+}
+
 .right {
   margin-left: auto;
+}
+
+.entering {
+  position: absolute;
+  transform: translateX(-110%);
+}
+
+.entered {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+
+.exiting {
+  position: absolute;
+}
+
+.exited {
+  transform: translateX(-110%);
+  transition: all var(--speed) ease;
+}
+
+.secondary-entering {
+  transform: translateX(110%);
+}
+.secondary-entered {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+.secondary-exiting {
+  transform: translateX(110%);
+  transition: all var(--speed) ease;
 }

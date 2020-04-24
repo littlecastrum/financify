@@ -11,7 +11,7 @@ type Props = {
 const DropdownItem: FunctionComponent<Props> = ({ url, goToMenu, leftIcon, rightIcon, children }) => {
   return (
     <a href={url} className={style.item} onClick={goToMenu}>
-      <span className={style.button}>{leftIcon}</span>
+      <span className={style.left}>{leftIcon}</span>
       {children}
       <span className={style.right}>{rightIcon}</span>
     </a>
