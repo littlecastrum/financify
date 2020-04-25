@@ -1,15 +1,15 @@
 import React, { useState, useRef, FunctionComponent, ReactElement } from 'react';
-import { Transition } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 
 import { useOutsideClick } from 'utils/hooks';
-import styles from './style.module.css';
+import styles from './styles.module.css';
 
 type Props = {
   icon: ReactElement,
-  url?: string
+  url?: string,
 }
 
-const NavItem: FunctionComponent<Props> = ({ icon, url, children }) => {
+const NavItem: FunctionComponent<Props> = ({ icon, children }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLLIElement>(null);
 
@@ -19,12 +19,16 @@ const NavItem: FunctionComponent<Props> = ({ icon, url, children }) => {
 
   return (
     <li className={styles.main} ref={ref}>
-      <a href={url} className={styles.button} onClick={() => setOpen(!open)}>
+      <button className={styles.button} onClick={() => setOpen(!open)}>
         {icon}
-      </a>
-      <Transition in={open} timeout={100}>
-        {state => <div className={styles[state]}>{children}</div>}
-      </Transition>
+      </button>
+      <CSSTransition
+        in={open}
+        timeout={500}
+        classNames={{ ...styles }}
+        unmountOnExit>
+        {children}
+      </CSSTransition>
     </li>
   );
 }

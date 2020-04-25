@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactElement } from 'react';
-import style from './style.module.css'
+import styles from './styles.module.css'
 
 type Props = {
   url?: string,
@@ -10,10 +10,10 @@ type Props = {
 
 const DropdownItem: FunctionComponent<Props> = ({ url, goToMenu, leftIcon, rightIcon, children }) => {
   return (
-    <a href={url} className={style.item} onClick={goToMenu}>
-      <span className={style.left}>{leftIcon}</span>
+    <a href={url} className={styles.item} onClick={goToMenu}>
+      <span className={styles.left}>{leftIcon}</span>
       {children}
-      <span className={style.right}>{rightIcon}</span>
+      <span className={styles.right}>{rightIcon}</span>
     </a>
   );
 }

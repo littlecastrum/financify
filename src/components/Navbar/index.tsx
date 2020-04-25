@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import styles from './style.module.css';
+import styles from './styles.module.css';
 
 const Navbar: FunctionComponent = ({ children }) => {
   return (
